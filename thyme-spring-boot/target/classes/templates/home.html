@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en" th:include="fragments/header :: header">
+</head>
+<body>
+	<h1 th:text="#{HELLO}"> !</h1>
+	<p>Welcome to <span th:text="${appName}">Our App</span></p>
+	<select id="locales">
+		<option value=""></option>
+		<option value="en" th:text="English"></option>
+		<option value="th" th:text="Thai"></option>
+	</select>
+	<form action="#" th:action="@{/fooform}" th:object="${command}" method="post">
+		<p>Simple Text Field: <input type="text" th:field="*{textField}" /></p>
+		<p><input type="submit" th:value="#{OK}" /> <input type="reset" th:value="#{CANCEL}" /> </p>
+	</form>
+</body>
+</html>
+
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>-->
+<!--<script type="text/javascript">-->
+    <!--$(document).ready(function() {-->
+        <!--$("#locales").change(function () {-->
+            <!--var selectedOption = $('#locales').val();-->
+            <!--if (selectedOption !== ''){-->
+                <!--window.location.replace('/?lang=' + selectedOption);-->
+            <!--}-->
+        <!--});-->
+    <!--});-->
+<!--</script>-->
