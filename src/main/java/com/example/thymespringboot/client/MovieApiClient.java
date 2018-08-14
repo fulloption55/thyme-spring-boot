@@ -45,6 +45,8 @@ public class MovieApiClient {
         log.info(responseEntity.toString());
         return responseEntity;
     }
+
+
     
      // ExecuteResponse, Execute is example request and response that got from soap
      public ExecuteResponse executeSoap(Execute executeRequest) {
@@ -55,5 +57,57 @@ public class MovieApiClient {
         log.info("Response to  SOAP with command [{}], [{}]", executeRequest.getCmdName(), executeResponse.getExecuteResult());
         return executeResponse;
     }
+    
+    
+    private static final String THAI_LANGUAGE = "th";
+//
+//    public ResponseEntity<RequestMovieDetail> getMovieDetail(String language) {
+//        String endpoint = movieApiConfig.getMovieDetailEndpointEn();
+//        if (THAI_LANGUAGE.equals(language)) {
+//            endpoint = movieApiConfig.getMovieDetailEndpointTh();
+//        }
+//        return (ResponseEntity<RequestMovieDetail>) getRestXml(endpoint, RequestMovieDetail.class);
+//    }
+//
+//    public ResponseEntity<RequestLocationCinema> getLocations(String language) {
+//        String endpoint = movieApiConfig.getLocationEndpointEn();
+//        if (THAI_LANGUAGE.equals(language)) {
+//            endpoint = movieApiConfig.getLocationEndpointTh();
+//        }
+//        return (ResponseEntity<RequestLocationCinema>) getRestXml(endpoint, RequestLocationCinema.class);
+//    }
+//
+//    public ResponseEntity<RequestMovie> getMovieNow(String language) {
+//        String endpoint = movieApiConfig.getMovieNowEndpointEn();
+//        if (THAI_LANGUAGE.equals(language)) {
+//            endpoint = movieApiConfig.getMovieNowEndpointTh();
+//        }
+//        return (ResponseEntity<RequestMovie>) getRestXml(endpoint, RequestMovie.class);
+//    }
+//
+//    public ResponseEntity<RequestMovie> getMovieSoon(String language) {
+//        String endpoint = movieApiConfig.getMovieSoonEndpointEn();
+//        if (THAI_LANGUAGE.equals(language)) {
+//            endpoint = movieApiConfig.getMovieSoonEndpointTh();
+//        }
+//        return (ResponseEntity<RequestMovie>) getRestXml(endpoint, RequestMovie.class);
+//    }
+//
+//    private ResponseEntity<?> getRestXml(String endpoint, Class<?> responseClass) {
+//        ResponseEntity<?> responseEntity;
+//        try {
+//            log.info("Request to get XML from [{}]", endpoint);
+//            responseEntity = sfRestTemplate.getForEntity(endpoint, responseClass);
+//        } catch (RestClientException rcEx) {
+//            if (rcEx.getRootCause() instanceof SocketTimeoutException) {
+//                log.error("Sending request was failed due to SocketTimeoutException from [{}]", endpoint, rcEx);
+//                throw rcEx;
+//            }
+//            log.error("Sending request was failed due to Connection from [{}]", endpoint, rcEx);
+//            throw rcEx;
+//        }
+//        log.info("Response to get XML from [{}], [{}]", endpoint, responseEntity.toString());
+//        return responseEntity;
+//    }
 
 }
