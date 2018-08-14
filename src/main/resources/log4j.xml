@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN" monitorInterval="30">
+    <Properties>
+        <property name="spring.application.name">XXXXXXXXX</property>
+        <property name="logging.pattern.console">%d{HH:mm:ss.SSS} [%t] %-5level %X{transactionId} %logger{36} - %msg%n</property>
+        <property name="logging.path">logs/${spring.application.name}/</property>
+        <property name="logging.file">application.log</property>
+        <property name="logging.file.roll-pattern">application-%d{yyyy-MM-dd}-%i.log</property>
+        <property name="logging.file.max-size">10MB</property>
+        <property name="logging.file.max-history">5</property>
+    </Properties>
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT" follow="true">
+            <PatternLayout pattern="${logging.pattern.console}"/>
+        </Console>
+
+        <RollingFile name="LogFile"
+                     fileName="${logging.path}${logging.file}"
+                     filePattern="${logging.path}${logging.file.roll-pattern}">
+            <PatternLayout pattern="${logging.pattern.console}"/>
+            <Policies>
+                <SizeBasedTriggeringPolicy size="${logging.file.max-size}"/>
+            </Policies>
+            <DefaultRolloverStrategy max="${logging.file.max-history}"/>
+        </RollingFile>
+    </Appenders>
+    <Loggers>
+
+        <Logger name="com.navercorp.linepay" additivity="false">
+            <AppenderRef ref="LogFile"/>
+            <AppenderRef ref="Console"/>
+        </Logger>
+
+        <Root level="info">
+            <AppenderRef ref="Console"/>
+        </Root>
+    </Loggers>
+</Configuration>
