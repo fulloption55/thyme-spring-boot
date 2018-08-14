@@ -36,3 +36,28 @@
         </Root>
     </Loggers>
 </Configuration>
+
+
+
+    <!--
+    Step 1 - Specify the property name and its variable in log4j2-spring.xml as below
+
+<Configuration status="warn">
+    <Properties>
+        <Property name="someProp">${bundle:test:someKey}</Property>
+    </Properties> 
+    
+</Configuration>
+        Step 2 - Use the above defined property in the log configuration e.g. suffix to log file name
+
+<Appenders>
+<File name="file" fileName="/path/to/logs/app-${someProp}.log">
+    <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} %-5p %-40c{1.} - %m%n"/>
+</File>
+</Appenders>
+        Step 3 - Create a bundle (viz. properties file) to hold the properties value e.g. test.properties
+
+        # properties for log4j2
+        someKey=someValue
+        someKey1=someValue1
+    -->
