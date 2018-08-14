@@ -1,0 +1,28 @@
+package com.example.thymespringboot.enums;
+
+import lombok.Getter;
+
+import java.util.Arrays;
+
+@Getter
+public enum ResponseEnum {
+    SUCCESS("000" , "Success", "Success Transaction"),
+    UNKNOWN_FAILURE("9399", "Unknown error occurs", "Any unexpected error");
+
+    private final String code;
+    private final String text;
+    private final String description;
+
+    ResponseEnum(String code , String text, String description){
+        this.code = code;
+        this.text = text;
+        this.description = description;
+    }
+
+    public static ResponseEnum getEnum(String codeInput) throws IllegalArgumentException {
+        return Arrays.stream(ResponseEnum.values())
+                .filter(responseEnum -> responseEnum.code.equals(codeInput))
+                .findFirst()
+                .orElseThrow(() -> new IllegalArgumentException("Unknown value: " + codeInput));
+    }
+}
