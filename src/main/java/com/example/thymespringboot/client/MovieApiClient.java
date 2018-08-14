@@ -45,5 +45,15 @@ public class MovieApiClient {
         log.info(responseEntity.toString());
         return responseEntity;
     }
+    
+     // ExecuteResponse, Execute is example request and response that got from soap
+     public ExecuteResponse executeSoap(Execute executeRequest) {
+        String uri = movieApiConfig.getWebserviceEndpoint();
+        log.info("Request to SOAP with command [{}]", executeRequest.getCmdName());
+        ExecuteResponse executeResponse = (ExecuteResponse) webServiceTemplate.marshalSendAndReceive(uri, executeRequest,
+                new SoapActionCallback(sfCinemaConfig.getSoapActionEndpoint()));
+        log.info("Response to  SOAP with command [{}], [{}]", executeRequest.getCmdName(), executeResponse.getExecuteResult());
+        return executeResponse;
+    }
 
 }
