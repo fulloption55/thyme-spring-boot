@@ -8,7 +8,11 @@ Main feature supports :
 - Example for manual resolve database information (i.e. call api to get database user)
 - Example to generate transaction ID and calculate execution time
 - Example to find matched code with enum
-- Example to simplify connect SOAP (Webservice)
+- Example to simplify connect SOAP (Webservice) include generate source code at artifact building
+- Example Run some function at starting 
+- Example to inject application properties into log4j2.xml (try to make plaform log)
+- Example to download files and place into application folder (i.e. download i18n properties from somewhere)
+- Example to add Jacoco and excluding file 
 
 Dev Setup
 ---------
