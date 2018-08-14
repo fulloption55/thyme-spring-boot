@@ -111,25 +111,25 @@
                 <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
-                <env>local</env>
+                <profile.env>local</profile.env>
             </properties>
         </profile>
         <profile>
-            <id>dev</id>
+            <id>alpha</id>
             <properties>
-                <env>dev</env>
+                <profile.env>alpha</profile.env>
             </properties>
         </profile>
         <profile>
-            <id>rc</id>
+            <id>staging</id>
             <properties>
-                <env>rc</env>
+                <profile.env>staging</profile.env>
             </properties>
         </profile>
         <profile>
-            <id>real</id>
+            <id>production</id>
             <properties>
-                <env>real</env>
+                <profile.env>production</profile.env>
             </properties>
         </profile>
     </profiles>
@@ -138,6 +138,13 @@
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+                <excludes>
+                    <exclude>sql/*.sql</exclude>
+                </excludes>
+            </resource>
+            <resource>
+                <directory>src/main/resources-${profile.env}</directory>
                 <filtering>true</filtering>
             </resource>
         </resources>
