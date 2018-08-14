@@ -1,0 +1,31 @@
+package com.example.thymespringboot.config;
+
+import org.springframework.boot.jdbc.DataSourceBuilder;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.core.env.Environment;
+
+import javax.sql.DataSource;
+
+@Configuration
+public class DatabaseConfig {
+    
+    private Environment environment;
+
+    @Bean
+    public DataSource dataSource() {
+        DBConnectionInfo dbConnectionInfo = getDatabaseInformation(); //example database object getting from 3rd Parties
+        return DataSourceBuilder
+                .create()
+                .url(dbConnectionInfo.getDbconnUrl())
+                .username(dbConnectionInfo.getDbconnUsrNm())
+                .password(dbConnectionInfo.getDbconnPwd())
+                .driverClassName(environment.getProperty("spring.datasource.driver-class-name"))
+                .build();
+    }
+
+
+    private DBConnectionInfo getDatabaseInformation() {
+        return //call to some where
+    }
+}
